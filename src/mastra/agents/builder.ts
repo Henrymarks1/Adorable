@@ -1,5 +1,6 @@
 import { SYSTEM_MESSAGE } from "@/lib/system";
 import { anthropic } from "@ai-sdk/anthropic";
+import { ANTHROPIC_MODEL_LITE } from "@/lib/model";
 import { Agent } from "@mastra/core/agent";
 import { Memory } from "@mastra/memory";
 import { PostgresStore, PgVector } from "@mastra/pg";
@@ -34,7 +35,7 @@ export const memory = new Memory({
 
 export const builderAgent = new Agent({
   name: "BuilderAgent",
-  model: anthropic("claude-3-7-sonnet-20250219"),
+  model: ANTHROPIC_MODEL_LITE, // Use cheaper model for testing
   instructions: SYSTEM_MESSAGE,
   memory,
   tools: {
@@ -50,7 +51,7 @@ export const builderAgent = new Agent({
         ),
       }),
       execute: async () => {
-        return {};
+        return { success: true };
       },
     }),
   },
