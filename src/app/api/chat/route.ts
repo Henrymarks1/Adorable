@@ -34,9 +34,6 @@ export async function POST(req: Request) {
       dev_server: {
         url: new URL(mcpEphemeralUrl),
       },
-      web_search: {
-        url: new URL("https://mcp.exa.ai/mcp?exaApiKey=d1ec5efe-4917-4122-84da-1671c79a0ac0"),
-      }
     },
   });
 
@@ -49,7 +46,7 @@ export async function POST(req: Request) {
       resourceId: appId,
       maxSteps: 100,
       maxRetries: 0,
-      maxOutputTokens: 8192,
+      maxOutputTokens: 64000,
       toolsets,
       onError: async (error) => {
         await mcp.disconnect();

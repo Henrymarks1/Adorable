@@ -109,15 +109,6 @@ export function ToolMessage({
     );
   }
 
-  if (toolInvocation.type === "tool-web_search") {
-    return (
-      <ToolBlock
-        name="web search"
-        toolInvocation={toolInvocation}
-      />
-    );
-  }
-
   // Fallback for other tools
   return (
     <ToolBlock
